@@ -9,11 +9,13 @@
 <body>
 
 <% if !notice.nil? %>
- <p class="notice"><%= notice %></p>
+ <p class="alert alert-info"><%= notice %></p>
 <% end %>
 <% if !alert.nil? %>
- <p class="alert"><%= alert %></p>
+ <p class="alert alert-error"><%= alert %></p>
 <% end %>
+
+<%= render "devise/user-nav" %>
 
 <%= yield %>
 
