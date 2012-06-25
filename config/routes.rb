@@ -1,4 +1,6 @@
 CMODashboard::Application.routes.draw do
+  resources :sites
+
   devise_for :users
 
   get "home/index"

@@ -1,1 +1,10 @@
-<h1>Welcome to Condo Motion</h1>
+<% if @sites %>
+	<h3>Your Sites</h3>
+	<ul>
+		<% @sites.each do |site| %>
+			<li><%= link_to site.name, site %></li>
+		<% end %>
+	</ul>
+	<%= link_to "New Site", new_site_path %>
+	<%= link_to "View Sites", sites_path %>
+<% end %>
