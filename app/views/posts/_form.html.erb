@@ -1,0 +1,38 @@
+<%= form_for(@post, :html => { :multipart => true }) do |f| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @post.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+	<div class="field">
+    <%= f.label "Site" %>
+    <%= collection_select(:post, :site_id, current_user.sites.all, :id, :name) %>
+  </div>
+  <%= hidden_field :post, :post_type, :value => @post_type %>
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+  <% unless @post_type == "Photo" %>
+	  <div class="field">
+	    <%= f.label :content %>
+	    <%= f.text_area :content, :rows => 5 %>
+	  </div>
+  <% end %>
+  <% unless @post_type == "News" %>
+	  <div class="field">
+	    <%= f.label "Attachment" %>
+	    <%= f.file_field (@post_type == "Document" ? :document : :photo) %>
+	  </div>
+  <% end %>
+  <div class="actions">
+    <%= f.submit :class => "btn" %>
+  </div>
+<% end %>

@@ -1,14 +1,14 @@
 class SitesController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :except => :show
+  layout "site", :only => :show
 
-  # GET /sites
-  # GET /sites.json
   def index
-    @user = current_user
-    @sites = @user.sites.all
+    @sites = current_user.sites.all
+    @posts = current_user.posts.search(params[:search]).filter_site(params[:site]).order('created_at DESC').page(params[:page]).per_page(5)
 
     respond_to do |format|
       format.html # index.html.erb
+      format.js
       format.json { render json: @sites }
     end
   end

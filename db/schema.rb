@@ -11,14 +11,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120625172557) do
+ActiveRecord::Schema.define(:version => 20120627151514) do
 
-  create_table "news", :force => true do |t|
+  create_table "posts", :force => true do |t|
     t.string   "title"
     t.text     "content"
+    t.string   "post_type"
     t.integer  "site_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+    t.string   "document_file_name"
+    t.string   "document_content_type"
+    t.integer  "document_file_size"
+    t.datetime "document_updated_at"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   create_table "sites", :force => true do |t|
@@ -28,8 +37,11 @@ ActiveRecord::Schema.define(:version => 20120625172557) do
     t.integer  "user_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.string   "slug"
+    t.text     "address"
   end
 
+  add_index "sites", ["slug"], :name => "index_sites_on_slug", :unique => true
   add_index "sites", ["user_id"], :name => "index_sites_on_user_id"
 
   create_table "users", :force => true do |t|

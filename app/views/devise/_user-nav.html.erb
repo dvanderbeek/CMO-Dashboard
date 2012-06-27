@@ -1,8 +1,19 @@
-<div id="user_nav">
-  <% if user_signed_in? %>
-    Signed in as <%= current_user.email %>. Not you?
-    <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-  <% else %>
-    <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
-  <% end %>
+<div id="header">
+	<div class="container-fluid">
+		<div id="logo">
+			<%= link_to(image_tag('logo.png'), user_signed_in? ? dashboard_path : root_url )%>
+		</div>
+		<div id="user_nav">
+		  <% if user_signed_in? %>
+		  	<div id="email" rel="tooltip" title="Manage Account" data-placement="bottom">
+		   		<%= link_to current_user.email, edit_user_registration_path(current_user) %>
+		    </div>
+		    <%= link_to raw('<i class="icon-off" rel="tooltip" title="Logout" data-placement="bottom"></i>'), destroy_user_session_path, :method => :delete %>
+		  <% elsif (@current_controller == 'sites' && @current_action == 'show') %>
+
+		  <% else %>
+		    <%= link_to "Sign up", new_user_registration_path, :class => "btn" %> <%= link_to "Sign in", new_user_session_path, :class => "btn" %>
+		  <% end %>
+		</div>
+	</div>
 </div>

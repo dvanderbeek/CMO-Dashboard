@@ -3,3 +3,70 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import 'bootstrap';
 @import 'font-awesome';
+body {
+  padding-top: 55px;
+  background: #f1f1f1!important;
+}
+#logo {
+  float: left;
+  padding-top: 5px;
+}
+#post_buttons {
+  position: fixed;
+  top: 55px;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+#user_nav {
+  float: right;
+  padding-top: 20px;
+  #email {
+    position: relative;
+    top: -3px;
+    display: inline-block;
+    margin-right: 5px;
+  }
+  a {
+    text-decoration: none;
+    color: #333;
+    margin-right: 10px;
+    &:hover {
+      color: #777;
+    }
+  }
+  i {
+    font-size: 22px;
+    &:hover {
+      color: #ccc;
+    }
+  }
+}
+table a {
+  &:hover {
+    text-decoration: none;
+  }
+  i {
+    color: #333;
+    font-size: 18px;
+  }
+}
+#header {
+  margin-bottom: 20px;
+  position: fixed;
+  background: #f1f1f1;
+  z-index: 1000;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 55px;
+}
+.alert {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  @include opacity(1);
+  @include border-radius(0);
+  margin-bottom: 0px;
+}

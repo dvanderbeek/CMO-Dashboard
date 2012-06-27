@@ -8,16 +8,19 @@
 </head>
 <body>
 
-<% if !notice.nil? %>
- <p class="alert alert-info"><%= notice %></p>
-<% end %>
-<% if !alert.nil? %>
- <p class="alert alert-error"><%= alert %></p>
-<% end %>
+<div class="container-fluid">
+	<% if !notice.nil? %>
+	 <p class="alert alert-info"><%= notice %></p>
+	<% end %>
+	<% if !alert.nil? %>
+	 <p class="alert alert-error"><%= alert %></p>
+	<% end %>
 
-<%= render "devise/user-nav" %>
+	<%= render "devise/user-nav" %>
 
-<%= yield %>
+	<%= yield %>
+
+</div>
 
 </body>
 </html>

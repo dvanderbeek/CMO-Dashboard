@@ -7,6 +7,7 @@ gem 'rails', '3.2.2'
 
 gem 'sqlite3'
 gem "paperclip", "~> 3.0"
+gem 'will_paginate'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -25,6 +26,7 @@ end
 gem 'jquery-rails'
 
 gem 'devise'
+gem "friendly_id", "~> 4.0.1"
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
