@@ -14,11 +14,12 @@
   @include border-radius(5px);
   margin: 10px 0px;
   .date {
-    background: #888;
+    display: none;
+    background: #f1f1f1;
     position: absolute;
     top: 5px;
     left: 0px;
-    color: #FFF;
+    color: #666;
     padding: 3px 10px;
   }
   .icon {
@@ -32,7 +33,7 @@
       text-decoration: none;
       font-size: 50px;
       text-shadow: 0px -1px 1px #666;
-      margin: 20px 0px 0px 17px;
+      margin: 10px 0px 0px 17px;
       &:hover {
         color: #ccc;
       }
@@ -58,6 +59,12 @@
   &:hover .controls {
     display: block;
   }
+  &:hover .date {
+    display: block;
+  }
+}
+table {
+  margin-bottom: 10px!important;
 }
 .alert {
   position: fixed;
@@ -87,7 +94,9 @@
   font-weight: bold;
   color: #888;
 }
-
+#add_site {
+  @include border-radius(15px);
+}
 .middleNavR {
   float: left;
   margin: 30px 0 0 0;
@@ -135,4 +144,23 @@
   text-decoration: none;
   font-size: 30px;
   text-shadow: 0px -1px 1px #666;
+}
+// Set corners individual because sometimes a single button can be in a .btn-group and we need :first-child and :last-child to both match
+.btn-group > .btn:first-child {
+  margin-left: 0;
+     -webkit-border-top-left-radius: 15px;
+         -moz-border-radius-topleft: 15px;
+             border-top-left-radius: 15px;
+  -webkit-border-bottom-left-radius: 15px;
+      -moz-border-radius-bottomleft: 15px;
+          border-bottom-left-radius: 15px;
+}
+// Need .dropdown-toggle since :last-child doesn't apply given a .dropdown-menu immediately after it
+.btn-group > .btn:last-child, .btn-group > .dropdown-toggle {
+     -webkit-border-top-right-radius: 15px;
+         -moz-border-radius-topright: 15px;
+             border-top-right-radius: 15px;
+  -webkit-border-bottom-right-radius: 15px;
+      -moz-border-radius-bottomright: 15px;
+          border-bottom-right-radius: 15px;
 }

@@ -36,7 +36,15 @@
 	</div>
 	<div class="span4">
 		<div style="position: fixed; z-index: 1001;">
-			<h3>Your Sites</h3>
+
+			<h3 style="margin: 20px 0 10px 0;">Filter Posts</h3>
+			<div class="btn-group">
+				<%= link_to raw('<i class="icon-bullhorn"></i> News'), posts_path(:post_type => "News"), :class => "btn" %>
+				<%= link_to raw('<i class="icon-file"></i> Documents'), posts_path(:post_type => "Document"), :class => "btn" %>
+				<%= link_to raw('<i class="icon-picture"></i> Photos'), posts_path(:post_type => "Photo"), :class => "btn" %>
+			</div>
+
+			<h3 style="margin: 20px 0 10px 0;">Your Sites</h3>
 			<table class="table">
 				<tbody>
 			<% @sites.each do |site| %>
@@ -44,13 +52,16 @@
 				    <td><%= link_to site.name, dashboard_path(:site => site.id ) %></td>
 				    <td><%= link_to raw('<i class="icon-eye-open" rel="tooltip" title="View Site"></i>'), site %></td>
 				    <td><%= link_to raw('<i class="icon-group" rel="tooltip" title="Users"></i>'), "#" %></td>
-				    <td><%= link_to raw('<i class="icon-pencil" rel="tooltip" title="Edit Site"></i>'), edit_site_path(site) %></td>
+				    <td><%= link_to raw('<i class="icon-cogs" rel="tooltip" title="Site Settings"></i>'), edit_site_path(site) %></td>
 				    <td><%= link_to raw('<i class="icon-trash" rel="tooltip" title="Delete Site"></i>'), site, confirm: 'Are you sure?', method: :delete, :style => "padding: 5px;" %></td>
 				  </tr>
 			<% end %>
 				</tbody>
 			</table>
-			<%= link_to raw('<i class="icon-plus"></i> New Site'), new_site_path, :class => 'btn btn-primary' %>
+			<%= link_to raw('<i class="icon-plus"></i> New Site'), new_site_path, :class => 'btn', :id => "add_site" %>
+
+
+
 		</div>
 	</div>
 </div>

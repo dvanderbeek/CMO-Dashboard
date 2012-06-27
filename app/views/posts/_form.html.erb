@@ -22,7 +22,7 @@
   </div>
   <% unless @post_type == "Photo" %>
 	  <div class="field">
-	    <%= f.label :content %>
+	    <%= f.label @post_type == "Document" ? "Description (optional)" : "Content" %>
 	    <%= f.text_area :content, :rows => 5 %>
 	  </div>
   <% end %>

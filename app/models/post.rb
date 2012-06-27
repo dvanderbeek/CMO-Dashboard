@@ -5,6 +5,7 @@ class Post < ActiveRecord::Base
   scope :document, :conditions => "post_type = 'Document'"
   scope :photo, :conditions => "post_type = 'Photo'"
   scope :news, :conditions => "post_type = 'News'"
+  validates :title, :presence => true
 
   def self.search(search)
     if search
@@ -17,6 +18,14 @@ class Post < ActiveRecord::Base
   def self.filter_site(site)
     if site
       where('site_id = ?', site)
+    else
+      scoped
+    end
+  end
+
+  def self.filter_post_type(post_type)
+    if post_type
+      where('post_type = ?', post_type)
     else
       scoped
     end
