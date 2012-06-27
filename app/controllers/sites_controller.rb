@@ -4,7 +4,7 @@ class SitesController < ApplicationController
 
   def index
     @sites = current_user.sites.all
-    @posts = current_user.posts.search(params[:search]).filter_site(params[:site]).order('created_at DESC').page(params[:page]).per_page(5)
+    @posts = current_user.posts.search(params[:search].to_s.upcase).filter_site(params[:site]).order('created_at DESC').page(params[:page]).per_page(5)
 
     respond_to do |format|
       format.html # index.html.erb
