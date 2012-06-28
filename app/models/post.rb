@@ -8,7 +8,7 @@ class Post < ActiveRecord::Base
       :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
     }
   has_attached_file :photo,
-    :styles => { :large => "600x", :medium => "300x", :thumb => "100x" }
+    :styles => { :large => "600x", :medium => "300x", :thumb => "100x" },
     :storage => :s3,
     :bucket => ENV['S3_BUCKET_NAME'],
     :s3_credentials => {
