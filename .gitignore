@@ -17,4 +17,4 @@
 # Ignore config initializers
 /config/aws-s3.rb
 /config/environments/development.rb
-/Gemfile
+/Gemfileconfig/initializers/aws-s3.rb
