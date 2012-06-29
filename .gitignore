@@ -13,3 +13,8 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+# Ignore config initializers
+/config/aws-s3.rb
+/config/environments/development.rb
+/Gemfile

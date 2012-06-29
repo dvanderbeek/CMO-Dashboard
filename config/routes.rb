@@ -2,10 +2,14 @@ CMODashboard::Application.routes.draw do
   resources :posts
   resources :sites
 
+  devise_for :members
   devise_for :users
+
 
   get "home/index"
   match "dashboard" => "sites#index", :as => :dashboard
+  match "members" => "sites#members", :as => :members
+  match 'sites/:id/members' => 'sites#members', :as => :site_members
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.

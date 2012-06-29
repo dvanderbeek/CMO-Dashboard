@@ -1,0 +1,11 @@
+<p><%= @greeting %>,</p>
+
+<p>A new <%= @post.post_type.downcase %> post has been added to your Condo Motion website!</p>
+
+<h3><%= @post.title %></h3>
+
+<% if @post.content %>
+	<p><%= @post.content %></p>
+<% end %>
+
+<p><%= link_to "Visit Site", site_url(@post.site) %></p>

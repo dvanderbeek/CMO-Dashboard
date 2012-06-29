@@ -28,10 +28,13 @@
   <% end %>
   <% unless @post_type == "News" %>
 	  <div class="field">
-	    <%= f.label "Attachment" %>
+	    <%= f.label @post_type == "Document" ? "Document" : "Photo" %>
 	    <%= f.file_field (@post_type == "Document" ? :document : :photo) %>
 	  </div>
   <% end %>
+  <label for="send_email" class="checkbox">Send Email to Members?
+    <%= check_box_tag :send_email, 1, true %>
+  </label>
   <div class="actions">
     <%= f.submit :class => "btn" %>
   </div>

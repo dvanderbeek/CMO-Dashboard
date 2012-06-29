@@ -9,6 +9,7 @@
 		   		<%= link_to current_user.email, edit_user_registration_path(current_user) %>
 		    </div>
 		    <%= link_to raw('<i class="icon-off" rel="tooltip" title="Logout" data-placement="bottom"></i>'), destroy_user_session_path, :method => :delete %>
+		    <%= link_to raw('<i class="icon-off" rel="tooltip" title="Logout" data-placement="bottom"></i>'), destroy_member_session_path, :method => :delete %>
 		  <% elsif (@current_controller == 'sites' && @current_action == 'show') %>
 
 		  <% else %>

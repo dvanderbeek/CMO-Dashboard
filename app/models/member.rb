@@ -1,13 +1,10 @@
-class User < ActiveRecord::Base
+class Member < ActiveRecord::Base
+  belongs_to :site
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
-
-  has_many :sites
-  has_many :posts, :through => :sites
-  has_many :members, :through => :sites
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :site_id
 end

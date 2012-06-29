@@ -54,7 +54,7 @@
 				  <tr>
 				    <td><%= link_to site.name, dashboard_path(:site => site.id ) %></td>
 				    <td><%= link_to raw('<i class="icon-eye-open" rel="tooltip" title="View Site"></i>'), site %></td>
-				    <td><%= link_to raw('<i class="icon-group" rel="tooltip" title="Users"></i>'), "#" %></td>
+				    <td><%= link_to raw('<i class="icon-group" rel="tooltip" title="Members"></i>'), site_members_path(site) %></td>
 				    <td><%= link_to raw('<i class="icon-cogs" rel="tooltip" title="Site Settings"></i>'), edit_site_path(site) %></td>
 				    <td><%= link_to raw('<i class="icon-trash" rel="tooltip" title="Delete Site"></i>'), site, confirm: 'Are you sure?', method: :delete, :style => "padding: 5px;" %></td>
 				  </tr>

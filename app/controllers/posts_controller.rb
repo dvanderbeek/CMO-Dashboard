@@ -44,10 +44,13 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = Post.new(params[:post])
+    @post = Site.find(params[:post][:site_id]).posts.build(params[:post])
 
     respond_to do |format|
       if @post.save
+        if (params[:send_email] == "1")
+          PostMailer.new_document(@post).deliver
+        end
         format.html { redirect_to sites_url, notice: 'Post was successfully created.' }
         format.json { render json: @post, status: :created, location: @post }
       else

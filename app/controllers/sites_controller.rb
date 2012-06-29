@@ -2,6 +2,16 @@ class SitesController < ApplicationController
   before_filter :authenticate_user!, :except => :show
   layout "site", :only => :show
 
+  def members
+    @sites = current_user.sites.all
+    if params[:site_id]
+      @members = Site.find(params[:site_id]).members.all
+    else
+      @members = current_user.members.all
+    end
+
+  end
+
   def index
     @sites = current_user.sites.all
     @posts = current_user.posts.search(params[:search].to_s.upcase).filter_site(params[:site]).order('created_at DESC').page(params[:page]).per_page(5)
