@@ -10,8 +10,6 @@ end
 group :development do
   gem 'sqlite3'
 end
-#gem 'sqlite3'
-#gem 'pg'
 gem 'thin'
 gem 'paperclip', '~> 3.0'
 gem 'aws-s3'
