@@ -1,6 +1,6 @@
 CMODashboard::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
-  config.action_mailer.default_url_options = { :host => 'http://deep-dusk-9518.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'http://www.condomotion.net' }
   config.action_mailer.raise_delivery_errors = false
 
   # Code is not reloaded between requests
