@@ -15,7 +15,7 @@
 /tmp
 
 # Ignore config initializers
-/config/aws-s3.rb
-/config/credentials.rb
+/config/initializers/credentials.rb
 /config/environments/development.rb
-/Gemfileconfig/initializers/aws-s3.rb
+/config/initializers/aws-s3.rb
+/Gemfile.lock
