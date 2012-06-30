@@ -1,6 +1,6 @@
 CMODashboard::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
-  config.action_mailer.default_url_options = { :host => 'http://quiet-sunset-2050.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'http://deep-dusk-9518.herokuapp.com' }
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
