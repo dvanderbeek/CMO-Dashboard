@@ -4,9 +4,14 @@ gem 'rails', '3.2.2'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-
+group :production do
+  gem 'pg'
+end
+group :development do
+  gem 'sqlite3'
+end
 #gem 'sqlite3'
-gem 'pg'
+#gem 'pg'
 gem 'paperclip', '~> 3.0'
 gem 'aws-s3'
 gem 'aws-sdk'
