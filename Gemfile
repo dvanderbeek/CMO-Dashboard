@@ -12,6 +12,7 @@ group :development do
 end
 #gem 'sqlite3'
 #gem 'pg'
+gem 'thin'
 gem 'paperclip', '~> 3.0'
 gem 'aws-s3'
 gem 'aws-sdk'
