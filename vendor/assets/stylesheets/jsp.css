@@ -1,0 +1,10 @@
+.jspContainer{overflow:hidden;position:relative;}
+.jspPane{position:absolute;}
+.jspVerticalBar{position:absolute;top:0;right:0;width:5px;}
+.jspVerticalBar *{margin:0;padding: 0;}
+.jspTrack{background:rgba(0, 0, 0, 0.05);position:relative;padding:0 0 0 0px;}
+.jspDrag{background:#999;position:relative;top:0;left:0;cursor:pointer;}
+/*set the hieght of the caps for a top/bottom border*/
+.jspCapTop,.jspCapBottom{display:block; height:0; width:10px; background:#fff;}
+/* Yuk! CSS Hack for IE6 3 pixel bug :( */
+* html .jspCorner{    margin: 0 -3px 0 0;}

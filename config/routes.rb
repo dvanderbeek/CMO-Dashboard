@@ -5,8 +5,8 @@ CMODashboard::Application.routes.draw do
   devise_for :members
   devise_for :users
 
-
   get "home/index"
+  get "designs/index"
   match "dashboard" => "sites#index", :as => :dashboard
   match "members" => "sites#members", :as => :members
   match 'sites/:id/members' => 'sites#members', :as => :site_members
