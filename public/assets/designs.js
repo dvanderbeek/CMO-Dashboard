@@ -1,0 +1,1 @@
+(function(){jQuery(function(){return $(".scrollable").jScrollPane({autoReinitialise:!0,hideFocus:!0})})}).call(this);
