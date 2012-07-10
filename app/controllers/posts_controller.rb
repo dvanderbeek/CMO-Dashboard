@@ -18,6 +18,7 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @sites = current_user.sites
     @post = current_user.posts.find(params[:id])
 
     respond_to do |format|

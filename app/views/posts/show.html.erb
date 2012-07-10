@@ -1,15 +1,23 @@
-<p id="notice"><%= notice %></p>
+<% content_for :dashboard do %>
+<div class="toolbar">
+	<h3><%= @post.title %></h3>
+</div>
 
-<p>
-  <b>Title:</b>
-  <%= @post.title %>
-</p>
-
-<p>
-  <b>Content:</b>
+<div style="padding: 20px;">
+	<% if @post.post_type == "Photo" %>
+		<%= image_tag @post.photo.url %>
+	<% end %>
   <%= @post.content %>
-</p>
+  <% if @post.post_type == "Document" %>
+  	<br/>
+  	<a href="<%= @post.document.url %>"><div class="thumb">
+    	<%= image_tag "document.png"%>
+    </div>
+	<% end %>
+  <br /><br />
 
+  <%= link_to 'Edit', edit_post_path(@post) %> |
+	<%= link_to 'Back', dashboard_path %>
+</div>
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', dashboard_path %>
+<% end %>
