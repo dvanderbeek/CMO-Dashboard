@@ -5,7 +5,7 @@
 
 <div style="padding: 20px;">
 	<% if @post.post_type == "Photo" %>
-		<%= image_tag @post.photo.url %>
+		<%= image_tag @post.photo.url, :style => "max-height: 75%;" %>
 	<% end %>
   <%= @post.content %>
   <% if @post.post_type == "Document" %>

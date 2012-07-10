@@ -10,9 +10,10 @@
       </ul>
     </div>
   <% end %>
-
+	<% unless @current_action == "edit" %>
     <%= f.label "Site" %>
     <%= collection_select(:post, :site_id, current_user.sites.all, :id, :name) %>
+  <% end %>
   <%= hidden_field :post, :post_type, :value => @post_type %>
     <%= f.label :title %>
     <%= f.text_field :title %>
@@ -24,11 +25,13 @@
 	    <%= f.label @post_type == "Document" ? "Document" : "Photo" %>
 	    <%= f.file_field (@post_type == "Document" ? :document : :photo) %>
   <% end %>
+  <% unless @current_action == "edit" %>
   <div style="margin: 15px 0px;">
 	  <label for="send_email" class="checkbox">Send Email to Members?
 	    <%= check_box_tag :send_email, 1, true %>
 	  </label>
   </div>
+  <% end %>
   <div class="actions">
     <%= f.submit :class => "btn btn-primary" %>
   </div>

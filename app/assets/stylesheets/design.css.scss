@@ -73,7 +73,16 @@ body {
   background: white;
 }
 
-
+.alert {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  @include opacity(1);
+  @include border-radius(0);
+  margin-bottom: 0px;
+  z-index: 10000;
+}
 
 .post {
     background: #fff;
