@@ -16,6 +16,7 @@ gem 'aws-s3'
 gem 'aws-sdk'
 gem 'will_paginate'
 gem 'jquery-rails'
+gem 'fancybox-rails'
 gem 'devise'
 gem 'friendly_id', '~> 4.0.1'
 # Gems used only for assets and not required

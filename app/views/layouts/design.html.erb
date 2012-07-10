@@ -2,9 +2,8 @@
 <html>
 <head>
   <title>Condo Motion</title>
-  <%= stylesheet_link_tag    "http://twitter.github.com/bootstrap/assets/css/bootstrap.css", "design.css", "jsp.css", :media => "all" %>
-  <%= stylesheet_link_tag    "http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css", :media => "all" %>
-  <%= javascript_include_tag "jquery", "http://twitter.github.com/bootstrap/assets/js/bootstrap.js", "jsp.js", "designs.js" %>
+  <%= stylesheet_link_tag "design.css", "bootstrap.min", "bootstrap-responsive.min", "jsp.css", :media => "all" %>
+  <%= javascript_include_tag "application", "bootstrap.min.js", "jsp.js", "designs.js" %>
   <link rel="shortcut icon" href="/favicon.png">
   <%= csrf_meta_tags %>
 </head>
@@ -24,7 +23,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
-      <a class="brand" href="#" style="padding-top: 6px;"><%= image_tag "logo_light.png", :height => "25px"%> </a>
+      <%= link_to image_tag('logo_light.png', :height => "25px"), dashboard_path, :class => "brand", :style => "padding-top: 6px;" %>
       <div class="nav-collapse">
 <!--         <ul class="nav">
           <li class="active"><a href="#">Home</a></li>
@@ -46,21 +45,24 @@
         </ul> -->
 
         <ul class="nav pull-right">
-        	<form class="navbar-search" action="">
-          	<input type="text" class="search-query span2" placeholder="Search">
-       		</form>
+        	<%= form_tag dashboard_path, :method => 'get', :id => "posts_search", :class => "navbar-search" do %>
+				    <%= text_field_tag :search, params[:search], :class => "search-query span2", :placeholder => "Search" %>
+				    <% if params[:site] %>
+				    	<%= hidden_field_tag "site", params[:site] %>
+				    <% end %>
+					<% end %>
           <li class="divider-vertical"></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">earlynovrock@gmail.com <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
-              <li class="divider"></li>
-              <li><a href="#">Separated link</a></li>
-            </ul>
+          <li class="dropdown" rel="tooltip" title="Manage Account" data-placement="bottom" >
+            <%= link_to current_user.email, edit_user_registration_path(current_user) %>
           </li>
-          <li><a href="#"><i class="icon-off" style="font-size: 20px;"></i></a></li>
+          <!-- <li>
+          	<a href="#" style="position: relative;"><i class="icon-envelope" style="font-size: 20px;"></i>
+          		<span class="badge badge-important" style="position: absolute; top: 3px; right: -2px; padding: 1px 6px 2px;">1</span>
+          	</a>
+          </li> -->
+          <li rel="tooltip" title="Logout" data-placement="bottom">
+          	<%= link_to raw('<i class="icon-off" style="font-size: 20px;"></i>'), destroy_user_session_path, :method => :delete %>
+          </li>
         </ul>
 
     	</div><!-- /.nav-collapse -->
@@ -72,24 +74,30 @@
 	  <div class="btn-group pull-left">
       <button class="btn dropdown-toggle" data-toggle="dropdown"><i class="icon-plus"></i> Post <span class="caret"></span></button>
       <ul class="dropdown-menu">
-        <li><a href="#"><i class="icon-bullhorn"></i> News</a></li>
-        <li><a href="#"><i class="icon-file"></i> Document</a></li>
-        <li><a href="#"><i class="icon-picture"></i> Photo</a></li>
+        <li>
+        	<%= link_to raw('<i class="icon-bullhorn"></i> News'), new_post_path(:post_type => "News") %>
+				</li>
+        <li>
+					<%= link_to raw('<i class="icon-file"></i> Document'), new_post_path(:post_type => "Document") %>
+				</li>
+        <li>
+					<%= link_to raw('<i class="icon-picture"></i> Photo'), new_post_path(:post_type => "Photo") %>
+				</li>
       </ul>
     </div>
     <ul class="nav nav-pills pull-left" style="margin-top: -3px; margin-left: 15px;">
-		  <li class="active"><a href="#">Dashboard</a></li>
-		  <li><a href="#">News</a></li>
-		  <li><a href="#">Documents</a></li>
-		  <li><a href="#">Photos</a></li>
+		  <li <% if @current_controller == "sites" && @current_action == "index" %>class="active"<% end %>><%= link_to "Dashboard", dashboard_path %></li>
+		  <li <% if params[:post_type] == "News" %>class="active"<% end %>><%= link_to "News", posts_path(:post_type => "News") %></li>
+		  <li <% if params[:post_type] == "Document" %>class="active"<% end %>><%= link_to "Documents", posts_path(:post_type => "Document") %></li>
+		  <li <% if params[:post_type] == "Photo" %>class="active"<% end %>><%= link_to "Photos", posts_path(:post_type => "Photo") %></li>
 		</ul>
-		<div class="pull-right" id="tools">
+		<!-- <div class="pull-right" id="tools">
 			<ul class="nav nav-pills" style="margin-top: -3px;">
 			  <li><a href="#"><i class="icon-group"></i></a></li>
 			  <li><a href="#"><i class="icon-tint"></i></a></li>
 			  <li><a href="#"><i class="icon-wrench"></i></a></li>
 			</ul>
-		</div>
+		</div> -->
   </div>
 </div>
 
@@ -98,7 +106,7 @@
     <div id="dashboard">
       <div class='row-fluid' style="height: 100%;">
         <div class="span9 scrollable" style="overflow-y: auto; height: 100%;">  <%= yield :dashboard %></div>
-        <div class="span3 scrollable" style="overflow-y: auto; height: 100%;">  <%= yield :sidebar %> </div>
+        <div class="span3 scrollable" style="overflow-y: auto; height: 100%;">  <%= render 'shared/sidebar' %> </div>
       </div
     </div>
   </div>

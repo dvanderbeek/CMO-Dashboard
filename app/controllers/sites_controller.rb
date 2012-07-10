@@ -1,6 +1,6 @@
 class SitesController < ApplicationController
   before_filter :authenticate_user!, :except => :show
-  layout "site", :only => :show
+  layout :resolve_layout
 
   def members
     @sites = current_user.sites.all
@@ -14,7 +14,7 @@ class SitesController < ApplicationController
 
   def index
     @sites = current_user.sites.all
-    @posts = current_user.posts.search(params[:search].to_s.upcase).filter_site(params[:site]).order('created_at DESC').page(params[:page]).per_page(5)
+    @posts = current_user.posts.search(params[:search].to_s.upcase).filter_site(params[:site]).order('created_at DESC')
 
     respond_to do |format|
       format.html # index.html.erb
@@ -38,6 +38,7 @@ class SitesController < ApplicationController
   # GET /sites/new.json
   def new
     @site = Site.new
+    @sites = current_user.sites
 
     respond_to do |format|
       format.html # new.html.erb
@@ -47,6 +48,7 @@ class SitesController < ApplicationController
 
   # GET /sites/1/edit
   def edit
+    @sites = current_user.sites
     @site = current_user.sites.find(params[:id])
   end
 
@@ -91,6 +93,17 @@ class SitesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to sites_url }
       format.json { head :no_content }
+    end
+  end
+
+  private
+
+  def resolve_layout
+    case action_name
+    when "show"
+      "site"
+    else
+      "design"
     end
   end
 end

@@ -1,0 +1,15 @@
+<div class="post post_list">
+    <div class="thumb">
+        <img src="http://cdn1.iconfinder.com/data/icons/nuvola2/128x128/apps/knewsletter.png" />
+    </div>
+    <div class="title">
+        <%= link_to raw('<h4>'+post.title+'</h4>'), post %>
+    </div>
+    <p class="content"><%= post.content %></p>
+    <div class="tools">
+        <%= link_to raw('<i class="icon-trash"></i>'), post_path(post), method: :delete, :confirm => "Are you sure?" %>
+        <br>
+        <%= link_to raw('<i class="icon-pencil"></i>'), edit_post_path(post) %>
+    </div>
+    <div style="clear: both;"></div>
+</div>

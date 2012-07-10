@@ -1,5 +1,10 @@
-<h1>New site</h1>
-
+<%= content_for :dashboard do %>
+<div class="toolbar">
+	<h3>New Site</h3>
+</div>
+<div style="padding: 20px;">
 <%= render 'form' %>
 
 <%= link_to 'Back', dashboard_path %>
+</div>
+<% end %>

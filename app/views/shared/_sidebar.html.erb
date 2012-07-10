@@ -1,0 +1,39 @@
+<div style="padding: 20px 20px 20px 0px;">
+	<% if params[:site] %>
+		<h3>Search Filters</h3>
+		<span class="label label-info" style="margin-right: 10px;">
+			Site: <%= Site.find(params[:site]).name %>
+			<%= link_to(raw('<i class="icon-remove" style="font-size: 8px; cursor: pointer; position: relative; top: -1px; margin-left: 2px; color: #fff; text-decoration: none;"></i>'), dashboard_path(:search => params[:search]))%>
+		</span>
+	<% end %>
+	<% if params[:search] %>
+		<% unless params[:site] %><h3>Search Filters</h3><% end %>
+		<span class="label label-info" style="margin-right: 10px;">
+			Search: <%= params[:search] %>
+			<%= link_to(raw('<i class="icon-remove" style="font-size: 8px; cursor: pointer; position: relative; top: -1px; margin-left: 2px; color: #fff; text-decoration: none;"></i>'), dashboard_path(:site => params[:site]))%>
+		</span>
+	<% end %>
+	<% unless params[:site].nil? && params[:search].nil? %>
+		<div style="height: 18px;"></div>
+	<% end %>
+
+	<h3>Your Sites</h3>
+	<table class="table" style="margin-top: 18px;">
+				<tbody>
+			<% if @sites.length == 0 %>
+				<p class="no_content">You haven't created any sites yet.  Add one to get started!</p>
+			<% else %>
+				<% @sites.each do |site| %>
+					  <tr>
+					    <td><%= link_to site.name, dashboard_path(:site => site.id, :search => params[:search] ) %></td>
+					    <td><%= link_to raw('<i class="icon-eye-open" rel="tooltip" title="View Site"></i>'), site %></td>
+					    <td><%= link_to raw('<i class="icon-group" rel="tooltip" title="Members"></i>'), site_members_path(site) %></td>
+					    <td><%= link_to raw('<i class="icon-cogs" rel="tooltip" title="Site Settings"></i>'), edit_site_path(site) %></td>
+					    <td><%= link_to raw('<i class="icon-trash" rel="tooltip" title="Delete Site"></i>'), site, confirm: 'Are you sure you want to permanently delete this site?', method: :delete, :style => "padding: 5px;" %></td>
+					  </tr>
+				<% end %>
+					</tbody>
+				</table>
+			<% end %>
+			<%= link_to raw('<i class="icon-plus"></i> New Site'), new_site_path, :class => 'btn', :id => "add_site" %>
+</div>

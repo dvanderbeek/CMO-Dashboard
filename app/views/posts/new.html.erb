@@ -1,5 +1,14 @@
-<h1>Post <%= params[:post_type] %></h1>
+<% content_for :dashboard do %>
+<div class="toolbar">
+	<h3>Post <%= params[:post_type]%></h3>
+</div>
 
-<%= render 'form' %>
+<div style="padding: 20px">
+	<%= render 'form' %>
+</div>
+<% end %>
 
-<%= link_to 'Back', dashboard_path %>
+
+<% content_for :sidebar do %>
+	<%= render 'shared/sidebar' %>
+<% end %>

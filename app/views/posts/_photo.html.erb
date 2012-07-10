@@ -1,0 +1,16 @@
+<div class="post post_grid">
+    <a href="<%= post.photo.url %>">
+    	<div class="thumb">
+        <%= image_tag post.photo.url(:medium), :class => "thumbnail", :style => "margin: 0px auto; width: 100px;"%>
+    	</div>
+	    <div class="title">
+	    	<h4><%= post.title %></h4>
+	    </div>
+	  </a>
+    <div class="content"><%= post.content %></div>
+    <div class="tools">
+        <%= link_to raw('<i class="icon-trash"></i>'), post_path(post), method: :delete, :confirm => "Are you sure?" %>
+        <br>
+        <%= link_to raw('<i class="icon-pencil"></i>'), edit_post_path(post) %>
+    </div>
+</div>

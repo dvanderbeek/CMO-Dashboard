@@ -1,5 +1,10 @@
-<h1>Members</h1>
-
-<% @members.each do |member| %>
-	<%= member.email %><br/>
+<% content_for :dashboard do %>
+	<div class="toolbar">
+		<h3>Site Members</h3>
+	</div>
+	<div style="padding: 20px;">
+		<% @members.each do |member| %>
+			<%= member.email %><br/>
+		<% end %>
+	</div>
 <% end %>

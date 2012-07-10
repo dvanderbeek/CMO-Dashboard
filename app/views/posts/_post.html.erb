@@ -1,25 +1,21 @@
-<div class="post">
-	<div class="date">
-		Posted <%= time_ago_in_words(post.created_at) %> ago to <%= post.site.name %>
-	</div>
-	<div class="icon">
-		<% if post.post_type == "Document" %>
-			<%= link_to raw('<i class="icon-file"></i>'), post.document.url %>
-		<% elsif post.post_type == "News" %>
-			<%= link_to raw('<i class="icon-bullhorn"></i>'), post %>
-		<% elsif post.post_type == "Photo" %>
-			<%= link_to(image_tag(post.photo.url(:thumb)), post.photo.url(:large), :class => "fancybox") %>
-		<% end %>
-	</div>
-	<h4 class="title">
-		<%= post.title %>
-	</h4>
-	<div class="content">
-		<%= post.content %>
-	</div>
-	<div class="controls">
-		<%= link_to raw('<i class="icon-pencil" rel="tooltip" title="Edit Post"></i>'), edit_post_path(post) %>
-		<%= link_to raw('<i class="icon-trash" rel="tooltip" title="Delete Post"></i>'), post, confirm: 'Are you sure?', method: :delete %>
-	</div>
-	<div class="clearfix"></div>
+<div class="post post_list">
+    <div class="thumb">
+        <% if post.post_type == "Document" %>
+					<%= link_to raw('<img src="http://cdn1.iconfinder.com/data/icons/CV_icons_by_miffo/128/references.png" />'), post.document.url %>
+				<% elsif post.post_type == "News" %>
+					<%= link_to raw('<img src="http://cdn1.iconfinder.com/data/icons/nuvola2/128x128/apps/knewsletter.png" />'), post %>
+				<% elsif post.post_type == "Photo" %>
+					<%= link_to(image_tag(post.photo.url(:thumb)), post.photo.url(:large), :class => "fancybox") %>
+				<% end %>
+    </div>
+    <div class="title">
+        <%= link_to raw('<h4>'+post.title+'</h4>'), post %>
+    </div>
+    <p class="content"><%= post.content %></p>
+    <div class="tools">
+        <%= link_to raw('<i class="icon-trash"></i>'), post_path(post), method: :delete, :confirm => "Are you sure?" %>
+        <br>
+        <%= link_to raw('<i class="icon-pencil"></i>'), edit_post_path(post) %>
+    </div>
+    <div style="clear: both;"></div>
 </div>

@@ -1,8 +1,11 @@
 class PostsController < ApplicationController
   before_filter :authenticate_user!
+  layout 'design'
+
   # GET /posts
   # GET /posts.json
   def index
+    @sites = current_user.sites
     @posts = current_user.posts.filter_post_type(params[:post_type]).filter_site(params[:site]).order('created_at DESC')
 
     respond_to do |format|
@@ -26,6 +29,7 @@ class PostsController < ApplicationController
   # GET /posts/new
   # GET /posts/new.json
   def new
+    @sites = current_user.sites
     @post = Post.new
     @post_type = params[:post_type]
 
@@ -37,6 +41,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
+    @sites = current_user.sites
     @post = current_user.posts.find(params[:id])
     @post_type = @post.post_type
   end

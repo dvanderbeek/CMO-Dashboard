@@ -1,13 +1,15 @@
 <% content_for :dashboard do %>
 <div style="padding: 20px;">
 	<h3>Recent Posts</h3>
+	<div id="posts">
+		<% if @posts.length > 0 %>
+			<%= render @posts %>
+		<% else %>
+			<p class="no_content">No posts to display!</p>
+		<% end %>
+	</div>
 </div>
 <% end %>
 <% content_for :sidebar do %>
-<div style="padding: 20px;">
-	<span class="label label-info">Search Filter 1 &times;</span> <span class="label label-info">Filter 2 &times;</span>
-	<h3 style="margin: 18px 0;">Your Sites</h3>
-	<p>List sites here</p>
-</div>
-
+	<%= render 'sidebar' %>
 <% end %>

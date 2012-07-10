@@ -1,6 +1,15 @@
-<h1>Editing post</h1>
+<% content_for :dashboard do %>
+<div class="toolbar">
+	<h3>Edit <%= @post.post_type %> Post</h3>
+</div>
 
-<%= render 'form' %>
+<div style="padding: 20px">
+	<%= render 'form' %>
 
-<%= link_to 'Show', @post %> |
-<%= link_to 'Dashboard', dashboard_path %>
+	<%= link_to 'Show', @post %>
+</div>
+<% end %>
+
+<% content_for :sidebar do %>
+	<%= render 'shared/sidebar' %>
+<% end %>
