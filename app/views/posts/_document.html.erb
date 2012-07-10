@@ -1,14 +1,14 @@
 <div class="post post_grid">
     <a href="<%= post.document.url %>"><div class="thumb">
-        <img src="http://cdn1.iconfinder.com/data/icons/CV_icons_by_miffo/128/references.png" />
+    	<%= image_tag "document.png"%>
     </div>
     <div class="title">
-        <h4><%= post.title %></h4>
+    	<h4><%= post.title %></h4>
     </div></a>
     <div class="content"><%= post.content %></div>
     <div class="tools">
-        <%= link_to raw('<i class="icon-trash"></i>'), post_path(post), method: :delete, :confirm => "Are you sure?" %>
-        <br>
-        <%= link_to raw('<i class="icon-pencil"></i>'), edit_post_path(post) %>
+    	<%= link_to raw('<i class="icon-trash"></i>'), post_path(post), method: :delete, :confirm => "Are you sure?" %>
+    	<br>
+    	<%= link_to raw('<i class="icon-pencil"></i>'), edit_post_path(post) %>
     </div>
 </div>

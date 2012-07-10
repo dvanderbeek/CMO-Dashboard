@@ -1,9 +1,9 @@
 <div class="post post_list">
     <div class="thumb">
         <% if post.post_type == "Document" %>
-					<%= link_to raw('<img src="http://cdn1.iconfinder.com/data/icons/CV_icons_by_miffo/128/references.png" />'), post.document.url %>
+					<%= link_to image_tag("document.png"), post.document.url %>
 				<% elsif post.post_type == "News" %>
-					<%= link_to raw('<img src="http://cdn1.iconfinder.com/data/icons/nuvola2/128x128/apps/knewsletter.png" />'), post %>
+					<%= link_to image_tag("newspaper.png"), post %>
 				<% elsif post.post_type == "Photo" %>
 					<%= link_to(image_tag(post.photo.url(:thumb)), post.photo.url(:large), :class => "fancybox") %>
 				<% end %>
