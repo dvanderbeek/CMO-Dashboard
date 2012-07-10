@@ -1,11 +1,11 @@
 <div class="post post_list">
     <div class="thumb">
         <% if post.post_type == "Document" %>
-					<%= link_to image_tag("document.png"), post.document.url %>
+					<%= link_to image_tag("document.png"), post %>
 				<% elsif post.post_type == "News" %>
 					<%= link_to image_tag("newspaper.png"), post %>
 				<% elsif post.post_type == "Photo" %>
-					<%= link_to(image_tag(post.photo.url(:thumb)), post.photo.url(:large), :class => "fancybox") %>
+					<%= link_to(image_tag(post.photo.url(:thumb)), post) %>
 				<% end %>
     </div>
     <div class="title">
